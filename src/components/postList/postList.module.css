@@ -1,0 +1,36 @@
+.postListWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color:white;
+    margin-top:20px
+
+}
+
+.postListForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    min-height: 25vh;
+    background-color: #3897f0;
+    border-radius: 20px;
+    
+}
+
+
+.optionsWrapper{
+    width: 300px;
+    height: 200px;
+    border: 1px solid black
+}
+.field{
+    display: flex;
+    flex-direction: row
+}
+.btn{
+    margin-bottom: 10px;
+}

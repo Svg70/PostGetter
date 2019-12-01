@@ -15,30 +15,43 @@ class PostList extends React.Component {
 
     componentDidMount() {
         // if(this.state.inputLinkValue !== null && this.state.numberOfPosts!== null && this.state.veliocityOfChange!== null)  
-        setInterval(
-            () => this.props.updateDataThunk(this.state), 1000 * this.props.postPage.veliocityOfChange);
+        this.runInterval()
+
 
     }
 
-
+    runInterval = ()=>{
+        this.setState({interval: setInterval(
+            () => this.props.updateDataThunk(this.state), 1000 *Number(this.props.postPage.veliocityOfChange)
+            )})
+    }
     state = {
         inputLinkValue: null,
         numberOfPosts: null,
-        veliocityOfChange: null
+        veliocityOfChange: null,
+        interval: null
     }
 
+    componentDidUpdate =(prevProps, prevState)=>{
+        if(prevProps.postPage.veliocityOfChange !== this.props.postPage.veliocityOfChange){
+        this.runInterval()}
+    }
 
     componentWillUnmount() {
         clearInterval(this.interval);
     }
 
     setDataToLocalState = (values) => {
+
+        clearInterval(this.state.interval)
+
         this.setState({
             inputLinkValue: values.inputLinkValue,
             numberOfPosts: values.numberOfPosts,
             veliocityOfChange: values.veliocityOfChange
         })
         this.props.getDataThunk(values.inputLinkValue, values.numberOfPosts, values.veliocityOfChange)
+        
     }
 
 

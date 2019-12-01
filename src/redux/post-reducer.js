@@ -36,11 +36,12 @@ let PostReducer = (state = initialstate, action) => {
         }
 
         case SET_FORM_TO_STATE: {
-
+            
             let stateCopy = {
                 ...state, inputLinkValue: action.inputLinkValue,
                 numberOfPosts: action.numberOfPosts, veliocityOfChange: action.veliocityOfChange
             }
+            
             return stateCopy
         }
         default:
